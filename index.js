@@ -24,14 +24,22 @@ process.stdin.on('data', (input) => {
   const keyword = input.trim();
 
   let result = "";
-
+  let found = false;
+  
   for (let i = 0; i < names.length; i++) {
     if (isSubstring(names[i], keyword)) {
       result = names[i];
+      found = true;
       break;
     }
   }
-
+ 
+  if(found){
     console.log("\nHasil ditemukan: " + result);
+  } else {
+    console.log("\nHasil tidak ditemukan");
+  }
+
+  process.exit(0);
  
 });
